@@ -1,3 +1,5 @@
+#!/usr/bin/env python
+
 from fabric.tasks import execute
 from fabric.colors import yellow, green, blue, red
 from fabric.api import env, cd, prefix, sudo as _sudo, run as _run, hide, task
