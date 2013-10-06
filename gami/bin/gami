@@ -31,7 +31,6 @@ def command_switcher(arguments):
         _print(green(local('fab --list')))
     else:
         cmd_string = "'" + "','".join(arguments[2:])+"'" 
-        sys.pwd()
         local("fab "+arguments[1] + ":" + cmd_string)
         
 
