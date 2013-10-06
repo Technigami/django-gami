@@ -9,7 +9,7 @@ setup(
     description=('Some tools to help automate common processes in django'),
     license='GPL',
     packages=['gami'],
-    scripts=['gami/bin/gami.py'],
+    scripts=['gami/bin/gami'],
     install_requires=[
         'fabric',
         'nose',
