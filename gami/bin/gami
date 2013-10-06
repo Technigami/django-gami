@@ -1,10 +1,10 @@
-#!/usr/bin/env python
+#!/usr/bin/python
 
 from fabric.tasks import execute
 from fabric.colors import yellow, green, blue, red
 from fabric.api import env, local, cd, prefix, sudo as _sudo, run as _run, hide, task
-
-import sys
+from fabfile import *
+import sys,site,os
 
 
 ###########################################
@@ -23,16 +23,25 @@ def print_command(command):
     _print(blue("$ ", bold=True) +
            yellow(command, bold=True) +
            red(" ->", bold=True))
-           
-           
+
+
 def command_switcher(arguments):
+
+    # Get the first fabfile we find in site-packages/gami/fabfile.py
+
+    for sitepackage in site.getsitepackages():
+        file = sitepackage + '/gami/fabfile.py'
+        if os.path.isfile(file):
+            print "HERE :: "+file
+
+
     if len(arguments) < 2:
         _print(red("Command not found.  Here is a list of the available commands.", bold=True))
-        _print(green(local('fab --list')))
+        _print(green(local('fab -f '+file+' --list')))
     else:
-        cmd_string = "'" + "','".join(arguments[2:])+"'" 
-        local("fab "+arguments[1] + ":" + cmd_string)
-        
+        cmd_string = "'" + "','".join(arguments[2:])+"'"
+        local("fab -f "+file+" "+ arguments[1] + ":" + cmd_string)
+
 
 
 if __name__ == "__main__":
