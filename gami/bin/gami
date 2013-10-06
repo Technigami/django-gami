@@ -3,37 +3,22 @@
 from fabric.tasks import execute
 from fabric.colors import yellow, green, blue, red
 from fabric.api import env, local, cd, prefix, sudo as _sudo, run as _run, hide, task
-from fabfile import *
+from gami.gamifab import *
+from gami.gamifab import _print
 import sys,site,os
-
-
-###########################################
-# Utils and wrappers for various commands #
-###########################################
-
-# from Mezzanine::
-
-def _print(output):
-    print
-    print output
-    print
-
-
-def print_command(command):
-    _print(blue("$ ", bold=True) +
-           yellow(command, bold=True) +
-           red(" ->", bold=True))
+from distutils.sysconfig import get_python_lib
 
 
 def command_switcher(arguments):
 
-    # Get the first fabfile we find in site-packages/gami/fabfile.py
-
-    for sitepackage in site.getsitepackages():
-        file = sitepackage + '/gami/fabfile.py'
-        if os.path.isfile(file):
-            print "HERE :: "+file
-
+    # Get the first fabfile we find in site-packages/gami/gamifab.py
+	
+    file = get_python_lib() + '/gami/gamifab.py'
+    
+    if os.path.isfile(file):
+        print "HERE :: "+file
+    else:
+        print file + " wasn't found"
 
     if len(arguments) < 2:
         _print(red("Command not found.  Here is a list of the available commands.", bold=True))
