@@ -1,7 +1,12 @@
 from fabric.api import *
-from colorama import Fore, Back, Style
+from fabric.colors import yellow, green, blue, red
+from gami import _print
 
-def clone(repo):
+@task
+def clone(repo, show=True):
+    """
+    Clones 
+    """
     repo_str = ""
     response = ""
     if repo.endswith(".git"):
@@ -11,21 +16,17 @@ def clone(repo):
  
     try:
         local(repo_str)
-        print ""
-        print Fore.GREEN + "Successfully cloned "+repo
-        print Fore.RESET
+        _print(green("Successfully cloned "+ repo, bold=True))
     except:
-        print ""
-        print Fore.RED + "Could not clone repository.  Either it didn't exist or you don't have access.  email dan@technigami.com with the name of the repository you're trying to clone."
-        print Fore.RESET
-    
+        _print(red("Could not clone repository.  Either it didn't exist or you don't have access.  email dan@technigami.com with the name of the repository you're trying to clone.",bold=True))    
 
-def workon(repo):
+@task
+def workon(repo, show=True):
     """
     Gets everything set up to work on a new technigami project,
     or gets your environment switched to a project repo if it exists.
-    
     """
+    
     reponame = repo.replace(".git","")
     try:
         local("workon " + reponame)
@@ -41,8 +42,9 @@ def workon(repo):
         
         with cd("~/technigami/"):
             clone(repo)
-        
-    
 
 def ls():
-    run("ls")
+    """
+    Test command
+    """
+    local('ls')
