@@ -48,6 +48,7 @@ Repository - the name of the repository to clone from technigami.  Can exclude .
 
 **Command**
 ```gami workon <name>```
+  
 Either initializes a new virtualenv, or enables the virutalenv with that name on your system.
 
 *Arguments*
