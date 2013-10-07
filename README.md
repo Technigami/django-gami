@@ -26,7 +26,7 @@ from a terminal, you can run 'gami <cmd> <argument>'
 Supported Commands
 ------------------
 
-*Command*
+**Command**
 ```gami init <name>```
 
 This command assumes you don't have a git repository set up yet.  It takes a directory containing source code you would like to add 
@@ -37,7 +37,7 @@ pushes it to the newly created remote repository.
 Name - if this is left blank, it will initialize a new repository with the name of the current working directory.
 
 
-*Command*
+**Command**
 ```gami clone <repository>```
 
 This is a wrapper around git clone that just saves some typing.  You can leave off the 'git' and the repository url
@@ -46,7 +46,7 @@ and just say "git clone <name>" or "git clone <name.git>".
 *Arguments*
 Repository - the name of the repository to clone from technigami.  Can exclude .git and the server name
 
-*Command*
+**Command**
 ```gami workon <name>```
 Either initializes a new virtualenv, or enables the virutalenv with that name on your system.
 
