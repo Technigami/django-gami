@@ -33,7 +33,7 @@ This command assumes you don't have a git repository set up yet.  It takes a dir
 to our remote hosted git, commits the code, initializes a new repository (if you have permsisions, otherwise you have to request)
 pushes it to the newly created remote repository.
                  
-* Arguments *
+*Arguments*
 Name - if this is left blank, it will initialize a new repository with the name of the current working directory.
 
 
@@ -43,8 +43,13 @@ Name - if this is left blank, it will initialize a new repository with the name 
 This is a wrapper around git clone that just saves some typing.  You can leave off the 'git' and the repository url
 and just say "git clone <name>" or "git clone <name.git>".
 
+*Arguments*
+Repository - the name of the repository to clone from technigami.  Can exclude .git and the server name
 
 *Command*
 ```gami workon <name>```
 Either initializes a new virtualenv, or enables the virutalenv with that name on your system.
+
+*Arguments*
+Name - The name of the environment you wish to work on.  We may enforce the rule that this be the same as the repository name without the '.git'
 
